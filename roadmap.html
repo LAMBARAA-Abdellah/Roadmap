@@ -201,55 +201,6 @@
             letter-spacing: 1px;
         }
 
-        .stats-charts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .chart-card {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(1, 14, 93, 0.1);
-            border-left: 5px solid #00104B;
-        }
-
-        .chart-title {
-            font-size: 1.8em;
-            color: #010E5D;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-
-        .progress-bar {
-            margin-bottom: 25px;
-        }
-
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-            color: #00104B;
-            font-weight: 600;
-        }
-
-        .progress-track {
-            height: 30px;
-            background: #e0e0e0;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #010E5D, #00104B);
-            border-radius: 15px;
-            transition: width 1s ease;
-        }
-
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -301,7 +252,7 @@
         }
 
         .back-btn {
-            position: fixed;
+            /* position: fixed; */
             top: 20px;
             left: 20px;
             background: white;
@@ -328,14 +279,14 @@
             display: block;
         }
 
-        .container-body {
+        .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 40px 20px;
             display: none;
         }
 
-        .container-body.active {
+        .container.active {
             display: block;
         }
 
@@ -423,6 +374,7 @@
             }
         }
 
+        /* NEW LAYOUT - 3 COLUMNS */
         .detail-header {
             background: white;
             padding: 40px;
@@ -437,6 +389,13 @@
             color: #010E5D;
             font-weight: 700;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .detail-icon {
+            font-size: 1.2em;
         }
 
         .detail-description {
@@ -445,100 +404,182 @@
             line-height: 1.6;
         }
 
-        .sections-container {
+        .detail-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
             margin-top: 30px;
         }
 
-        .section {
+        /* LEFT COLUMN - Existant/Développé */
+        .left-section {
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(1, 14, 93, 0.08);
+            border-top: 4px solid #2e7d32;
         }
 
         .section-title {
-            font-size: 1.8em;
+            font-size: 1.5em;
             color: #010E5D;
             font-weight: 700;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #00104B;
-        }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
         }
 
         .feature-item {
             padding: 15px 0;
-            border-bottom: 1px solid #e0e0e0;
-            color: #00104B;
-            font-size: 1.1em;
-            display: flex;
-            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
         }
 
         .feature-item:last-child {
             border-bottom: none;
         }
 
-        .feature-item::before {
-            content: '\2713';
+        .feature-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #010E5D;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-title::before {
+            content: '✓';
             display: inline-block;
-            width: 28px;
-            height: 28px;
-            background: #00104B;
+            width: 22px;
+            height: 22px;
+            background: #2e7d32;
             color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 28px;
-            margin-right: 15px;
-            font-weight: bold;
-            font-size: 0.9em;
+            line-height: 22px;
+            font-size: 0.8em;
             flex-shrink: 0;
         }
 
+        .feature-desc {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+            margin-left: 32px;
+        }
+
+        /* MIDDLE COLUMN - KPIs / Screenshots */
+        .middle-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(1, 14, 93, 0.08);
+            border-top: 4px solid #00104B;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .kpi-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #00104B;
+            margin-bottom: 5px;
+        }
+
+        .kpi-label {
+            font-size: 0.95em;
+            color: #010E5D;
+            font-weight: 600;
+        }
+
+        .screenshot-placeholder {
+            background: #f0f4ff;
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #00104B;
+            border: 2px dashed #00104B;
+            font-size: 3em;
+        }
+
+        /* RIGHT COLUMN - Roadmap 2026 */
+        .right-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(1, 14, 93, 0.08);
+            border-top: 4px solid #ef6c00;
+        }
+
         .timeline {
-            margin-top: 30px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #43e97b, #4facfe, #fa709a, #f093fb);
         }
 
         .timeline-item {
-            padding: 25px;
-            margin-bottom: 20px;
-            background: #fafbfe;
-            border-radius: 10px;
-            border-left: 5px solid #00104B;
-            transition: all 0.3s ease;
+            position: relative;
+            padding: 20px 0;
+            margin-bottom: 15px;
         }
 
-        .timeline-item:hover {
-            background: #f0f4ff;
-            transform: translateX(5px);
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #00104B;
+            z-index: 1;
         }
 
         .timeline-period {
-            font-size: 1.3em;
+            font-size: 1em;
             font-weight: 700;
-            color: #00104B;
+            color: white;
+            background: #00104B;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
             margin-bottom: 10px;
         }
 
-        .timeline-content {
+        .timeline-title {
+            font-size: 1.1em;
+            font-weight: 700;
             color: #010E5D;
-            font-size: 1.05em;
-            line-height: 1.6;
+            margin-bottom: 8px;
         }
 
-        @media (max-width: 968px) {
-            .sections-container {
-                grid-template-columns: 1fr;
-            }
+        .timeline-desc {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+        }
 
-            .stats-charts {
+        @media (max-width: 1200px) {
+            .detail-content {
                 grid-template-columns: 1fr;
             }
         }
@@ -549,7 +590,7 @@
     <div id="coverPage" class="cover-page">
         <div class="cover-content">
             <div class="cover-logo">🚀</div>
-            <h1 class="cover-title">ROADMAP</h1>
+            <h1 class="cover-title">Roadmap</h1>
             <p class="cover-subtitle">Roadmap & Vision Strategique</p>
             <p class="cover-year">2026</p>
             <button class="cover-btn" onclick="showStatsPage()">Commencer</button>
@@ -582,84 +623,21 @@
                 </div>
             </div>
 
-            <div class="stats-charts">
-                <div class="chart-card">
-                    <h3 class="chart-title">Progression par Module</h3>
-                    <div class="progress-bar">
-                        <div class="progress-label">
-                            <span>Modules Completes</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-label">
-                            <span>Modules En Cours</span>
-                            <span>25%</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width: 25%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="chart-card">
-                    <h3 class="chart-title">Objectifs 2026</h3>
-                    <div class="progress-bar">
-                        <div class="progress-label">
-                            <span>S1 2026 (Jan-Mar)</span>
-                            <span>Planning</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width: 100%; background: #43e97b"></div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-label">
-                            <span>S2 2026 (Avr-Juin)</span>
-                            <span>Planning</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width: 100%; background: #4facfe"></div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-label">
-                            <span>S3 2026 (Juil-Sep)</span>
-                            <span>Planning</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width: 100%; background: #fa709a"></div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-label">
-                            <span>S4 2026 (Oct-Dec)</span>
-                            <span>Planning</span>
-                        </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width: 100%; background: #f093fb"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="nav-buttons">
                 <button class="nav-btn" onclick="showModulesPage()">Voir les Modules</button>
             </div>
         </div>
     </div>
 
-    <button class="back-btn" onclick="showModulesGrid()">Retour aux Modules</button>
 
     <div class="header" id="modulesHeader">
+        <button class="back-btn" onclick="showModulesGrid()">← Retour aux Modules</button>
+
         <h1>Roadmap Modules 2026</h1>
-        <p>Team B - Vision et Planning</p>
+        <p>Roadmap - Vision et Planning</p>
     </div>
 
-    <div class="container-body" id="modulesContainer">
+    <div class="container" id="modulesContainer">
         <div id="modulesGrid" class="modules-grid">
             <div class="module-card" onclick="showModuleDetail('dashboard')">
                 <div class="module-icon">📊</div>
@@ -764,375 +742,260 @@
     <script>
         const modulesData = {
             dashboard: {
+                icon: '📊',
                 title: 'Dashboard',
-                description: 'Tableau de bord central avec visualisation des metriques cles et KPIs en temps reel',
+                description: 'Tableau de bord central avec visualisation des metriques cles et KPIs en temps reel pour un suivi optimal de l\'activite',
                 existing: [
-                    'Widgets personnalisables',
-                    'Graphiques interactifs',
-                    'Metriques en temps reel',
-                    'Export de donnees'
+                    {
+                        title: 'Widgets Personnalisables',
+                        desc: 'Interface drag & drop pour organiser les widgets selon les besoins utilisateur'
+                    },
+                    {
+                        title: 'Graphiques Interactifs',
+                        desc: 'Visualisation des donnees avec graphiques dynamiques (lignes, barres, camemberts)'
+                    },
+                    {
+                        title: 'Metriques Temps Reel',
+                        desc: 'Affichage instantane des KPIs critiques avec mise à jour automatique'
+                    },
+                    {
+                        title: 'Export de Donnees',
+                        desc: 'Export des rapports en PDF, Excel et CSV pour analyse externe'
+                    }
                 ],
-                todo: [
+                kpis: [
+                    { value: '2.5s', label: 'Temps de chargement' },
+                    { value: '99.9%', label: 'Disponibilite' },
+                    { value: '1200+', label: 'Utilisateurs actifs' }
+                ],
+                roadmap: [
                     {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Integration de nouveaux widgets predictifs et amelioration des performances'
+                        period: 'S1 2026',
+                        title: 'Widgets Predictifs IA',
+                        desc: 'Integration de widgets avec predictions basees sur l\'intelligence artificielle et amelioration des performances de chargement'
                     },
                     {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Ajout de dashboards thematiques par departement et roles'
+                        period: 'S2 2026',
+                        title: 'Dashboards Thematiques',
+                        desc: 'Creation de dashboards specialises par departement avec templates pre-configures'
                     },
                     {
-                        period: 'S3 2026 (Juil-Sep)',
-                        content: 'Implementation de la personnalisation avancee avec AI'
+                        period: 'S3 2026',
+                        title: 'Personnalisation AI',
+                        desc: 'Systeme de recommandation intelligent pour l\'organisation optimale des widgets'
                     },
                     {
-                        period: 'S4 2026 (Oct-Dec)',
-                        content: 'Integration complete avec tous les modules existants'
+                        period: 'S4 2026',
+                        title: 'Integration Complete',
+                        desc: 'Connexion avec tous les modules existants et unification des donnees'
                     }
                 ]
             },
             sms: {
+                icon: '📱',
                 title: 'SMS',
-                description: 'Module de gestion et envoi de notifications SMS automatiques',
+                description: 'Module de gestion et envoi de notifications SMS automatiques avec suivi complet des delivrabilites',
                 existing: [
-                    'Envoi de SMS en masse',
-                    'Templates personnalisables',
-                    'Historique des envois',
-                    'Integration API'
-                ],
-                todo: [
                     {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Ajout de SMS interactifs avec reponses automatiques'
+                        title: 'Envoi en Masse',
+                        desc: 'Capacite d\'envoi simultane vers plusieurs milliers de destinataires'
                     },
                     {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Implementation du routage intelligent multi-operateurs'
+                        title: 'Templates Personnalisables',
+                        desc: 'Bibliotheque de templates avec variables dynamiques pour personnalisation'
+                    },
+                    {
+                        title: 'Historique Complet',
+                        desc: 'Traçabilite totale des envois avec statuts de delivrance et erreurs'
+                    },
+                    {
+                        title: 'API Integration',
+                        desc: 'API RESTful pour integration avec systemes externes'
+                    }
+                ],
+                kpis: [
+                    { value: '98.5%', label: 'Taux de delivrance' },
+                    { value: '50K', label: 'SMS/jour' },
+                    { value: '<2s', label: 'Temps d\'envoi' }
+                ],
+                roadmap: [
+                    {
+                        period: 'S1 2026',
+                        title: 'SMS Interactifs',
+                        desc: 'Implementation de SMS bidirectionnels avec reponses automatiques intelligentes'
+                    },
+                    {
+                        period: 'S2 2026',
+                        title: 'Routage Multi-Operateurs',
+                        desc: 'Systeme de routage intelligent pour optimiser couts et delivrabilite'
                     }
                 ]
             },
             mobile: {
+                icon: '📲',
                 title: 'Application Mobile',
-                description: 'Application mobile native pour acces aux fonctionnalites principales',
+                description: 'Application mobile native iOS et Android avec synchronisation temps reel et mode hors ligne',
                 existing: [
-                    'Interface iOS et Android',
-                    'Notifications push',
-                    'Mode hors ligne',
-                    'Synchronisation automatique'
+                    {
+                        title: 'Multi-Plateforme',
+                        desc: 'Applications natives pour iOS et Android avec experience utilisateur optimale'
+                    },
+                    {
+                        title: 'Notifications Push',
+                        desc: 'Systeme de notifications push en temps reel avec personnalisation'
+                    },
+                    {
+                        title: 'Mode Hors Ligne',
+                        desc: 'Fonctionnement complet sans connexion avec synchronisation automatique'
+                    },
+                    {
+                        title: 'Sync Automatique',
+                        desc: 'Synchronisation bidirectionnelle des donnees en arriere-plan'
+                    }
                 ],
-                todo: [
+                kpis: [
+                    { value: '4.8⭐', label: 'Note App Store' },
+                    { value: '15K', label: 'Telechargements' },
+                    { value: '85%', label: 'Retention 30j' }
+                ],
+                roadmap: [
                     {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Refonte complete de l\'UI/UX mobile'
+                        period: 'S1 2026',
+                        title: 'Refonte UI/UX',
+                        desc: 'Redesign complet de l\'interface utilisateur avec Material Design 3'
                     },
                     {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Ajout de fonctionnalites de realite augmentee'
+                        period: 'S2 2026',
+                        title: 'Realite Augmentee',
+                        desc: 'Integration de fonctionnalites AR pour visualisation 3D'
                     },
                     {
-                        period: 'S3 2026 (Juil-Sep)',
-                        content: 'Integration de l\'analyse d\'images par IA'
+                        period: 'S3 2026',
+                        title: 'Analyse Images IA',
+                        desc: 'Reconnaissance d\'images par intelligence artificielle'
                     },
                     {
-                        period: 'S4 2026 (Oct-Dec)',
-                        content: 'Support des wearables et appareils IoT'
+                        period: 'S4 2026',
+                        title: 'Wearables & IoT',
+                        desc: 'Support des montres connectees et appareils IoT'
                     }
                 ]
             },
             reporting: {
+                icon: '📈',
                 title: 'Reporting',
-                description: 'Systeme complet de generation de rapports personnalises',
+                description: 'Systeme complet de generation de rapports personnalises avec planification automatique',
                 existing: [
-                    'Generation automatique de rapports',
-                    'Templates multiples',
-                    'Export PDF/Excel',
-                    'Planification d\'envoi'
-                ],
-                todo: [
                     {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Ajout de rapports interactifs avec drill-down'
+                        title: 'Generation Automatique',
+                        desc: 'Creation de rapports selon calendrier predefini avec envoi automatique'
                     },
                     {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Integration de l\'analyse predictive'
-                    }
-                ]
-            },
-            oil: {
-                title: 'Oil Monitoring',
-                description: 'Surveillance en temps reel des systemes de lubrification',
-                existing: [
-                    'Monitoring en temps reel',
-                    'Alertes automatiques',
-                    'Historique detaille',
-                    'Analytics avances'
-                ],
-                todo: [
-                    {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Integration de capteurs IoT nouvelle generation'
+                        title: 'Templates Multiples',
+                        desc: 'Bibliotheque de templates pour differents types de rapports'
                     },
                     {
-                        period: 'S3 2026 (Juil-Sep)',
-                        content: 'Maintenance predictive avec Machine Learning'
-                    }
-                ]
-            },
-            admin: {
-                title: 'Espace Admin',
-                description: 'Interface d\'administration complete pour la gestion de la plateforme',
-                existing: [
-                    'Gestion des utilisateurs',
-                    'Configuration systeme',
-                    'Logs et audit',
-                    'Parametres globaux'
-                ],
-                todo: [
-                    {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Ajout du module de supervision en temps reel'
+                        title: 'Export Multi-Format',
+                        desc: 'Export en PDF, Excel, Word et formats personnalises'
                     },
                     {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Implementation du controle avance des permissions'
+                        title: 'Planification Flexible',
+                        desc: 'Systeme de scheduling avance pour envois automatises'
                     }
-                ]
-            },
-            auth: {
-                title: 'Authorization',
-                description: 'Systeme d\'authentification et controle d\'acces securise',
-                existing: [
-                    'Authentification multi-facteurs',
-                    'Gestion des roles',
-                    'SSO integration',
-                    'Audit de securite'
                 ],
-                todo: [
+                kpis: [
+                    { value: '500+', label: 'Rapports mensuels' },
+                    { value: '95%', label: 'Satisfaction utilisateur' },
+                    { value: '10s', label: 'Temps de generation' }
+                ],
+                roadmap: [
                     {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Renforcement de la securite avec biometrie'
+                        period: 'S1 2026',
+                        title: 'Rapports Dynamiques',
+                        desc: 'Creation de rapports interactifs avec elements cliquables'
                     },
                     {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Integration de la gestion des acces basée sur les attributs (ABAC)'
-                    }
-                ]
-            },
-            vibox: {
-                title: 'Vibox Report',
-                description: 'Generation de rapports Vibox avec configuration avancee',
-                existing: [
-                    'Templates configurables',
-                    'Generation automatique',
-                    'Multi-formats',
-                    'Planification'
-                ],
-                todo: [
-                    {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Amelioration des templates avec IA generative'
-                    }
-                ]
-            },
-            cmcp: {
-                title: 'CMCP Process View',
-                description: 'Visualisation des processus CMCP avec authentification',
-                existing: [
-                    'Authentification CMCP',
-                    'Visualisation 3D',
-                    'Synchronisation OCP',
-                    'Vues process'
-                ],
-                todo: [
-                    {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Ajout de simulations interactives 3D'
+                        period: 'S2 2026',
+                        title: 'Analyse Predictive',
+                        desc: 'Incorporation d\'analyses predictives dans les rapports'
                     },
                     {
-                        period: 'S3 2026 (Juil-Sep)',
-                        content: 'Integration realite virtuelle pour formation'
-                    }
-                ]
-            },
-            version: {
-                title: 'Version Management',
-                description: 'Gestion centralisee des versions et deployments',
-                existing: [
-                    'Suivi des versions',
-                    'Historique complet',
-                    'Notifications',
-                    'Rollback automatique'
-                ],
-                todo: [
-                    {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Integration CI/CD complete avec tests automatises'
-                    }
-                ]
-            },
-            checklist: {
-                title: 'Checklist System',
-                description: 'Systeme de gestion des checklists avec planning',
-                existing: [
-                    'Templates checklist',
-                    'Planning automatique',
-                    'Assignation taches',
-                    'Suivi progression'
-                ],
-                todo: [
-                    {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Ajout de checklists intelligentes avec suggestions'
-                    }
-                ]
-            },
-            email: {
-                title: 'Email Automation',
-                description: 'Automatisation complete des communications email',
-                existing: [
-                    'Envoi automatique',
-                    'Templates personnalises',
-                    'Gestion des listes',
-                    'Analytics email'
-                ],
-                todo: [
-                    {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Integration de l\'IA pour optimisation des envois'
-                    }
-                ]
-            },
-            analytics: {
-                title: 'Analytics',
-                description: 'Module d\'analyse avancee avec Machine Learning',
-                existing: [
-                    'Tableaux de bord analytiques',
-                    'Rapports statistiques',
-                    'Visualisations graphiques'
-                ],
-                todo: [
-                    {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Lancement du module analytics avec ML'
+                        period: 'S3 2026',
+                        title: 'Collaboration en Temps Reel',
+                        desc: 'Edition collaborative des rapports avec commentaires en temps reel'
                     },
                     {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Integration de predictions et recommandations'
-                    },
-                    {
-                        period: 'S3 2026 (Juil-Sep)',
-                        content: 'Ajout de l\'analyse comportementale avancee'
-                    }
-                ]
-            },
-            notifications: {
-                title: 'Notifications',
-                description: 'Centre de notifications multi-canaux intelligent',
-                existing: [
-                    'Notifications in-app',
-                    'Configuration par utilisateur',
-                    'Historique des notifications'
-                ],
-                todo: [
-                    {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Integration push notifications multi-plateforme'
-                    },
-                    {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Ajout de notifications intelligentes avec priorites'
-                    }
-                ]
-            },
-            users: {
-                title: 'User Management',
-                description: 'Gestion complete des utilisateurs et profils',
-                existing: [
-                    'CRUD utilisateurs',
-                    'Gestion des roles',
-                    'Profils personnalises',
-                    'Audit des actions'
-                ],
-                todo: [
-                    {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Ajout de la gestion des groupes dynamiques'
-                    }
-                ]
-            },
-            api: {
-                title: 'API Gateway',
-                description: 'Gateway API centralisee pour integrations externes',
-                existing: [
-                    'API REST documentee',
-                    'Authentification API',
-                    'Rate limiting'
-                ],
-                todo: [
-                    {
-                        period: 'S1 2026 (Jan-Mar)',
-                        content: 'Deploiement API Gateway avec micro-services'
-                    },
-                    {
-                        period: 'S2 2026 (Avr-Juin)',
-                        content: 'Integration GraphQL et WebSocket'
-                    },
-                    {
-                        period: 'S3 2026 (Juil-Sep)',
-                        content: 'Marketplace API pour partenaires externes'
+                        period: 'S4 2026',
+                        title: 'Integration BI Avancee',
+                        desc: 'Connexion avec outils BI pour analyses approfondies'
                     }
                 ]
             }
         };
-
         function showStatsPage() {
             document.getElementById('coverPage').style.display = 'none';
             document.getElementById('statsPage').classList.add('active');
         }
-
         function showModulesPage() {
             document.getElementById('statsPage').classList.remove('active');
             document.getElementById('modulesHeader').classList.add('active');
             document.getElementById('modulesContainer').classList.add('active');
         }
-
-        function showModuleDetail(moduleId) {
-            const data = modulesData[moduleId];
-            const detailDiv = document.getElementById('moduleDetail');
-            const gridDiv = document.getElementById('modulesGrid');
-
-            let existingHtml = '';
-            data.existing.forEach(function (item) {
-                existingHtml += '<li class="feature-item">' + item + '</li>';
-            });
-
-            let todoHtml = '';
-            data.todo.forEach(function (item) {
-                todoHtml += '<div class="timeline-item"><div class="timeline-period">' +
-                    item.period + '</div><div class="timeline-content">' +
-                    item.content + '</div></div>';
-            });
-
-            detailDiv.innerHTML = '<div class="detail-header"><h2 class="detail-title">' +
-                data.title + '</h2><p class="detail-description">' +
-                data.description + '</p></div><div class="sections-container">' +
-                '<div class="section"><h3 class="section-title">Existant / Developpe</h3>' +
-                '<ul class="feature-list">' + existingHtml + '</ul></div>' +
-                '<div class="section"><h3 class="section-title">Roadmap 2026</h3>' +
-                '<div class="timeline">' + todoHtml + '</div></div></div>';
-
-            gridDiv.style.display = 'none';
-            detailDiv.classList.add('active');
-            document.querySelector('.back-btn').classList.add('visible');
-            window.scrollTo(0, 0);
-        }
-
         function showModulesGrid() {
-            document.getElementById('modulesGrid').style.display = 'grid';
             document.getElementById('moduleDetail').classList.remove('active');
+            document.getElementById('modulesGrid').style.display = 'grid';
             document.querySelector('.back-btn').classList.remove('visible');
-            window.scrollTo(0, 0);
+        }
+        function showModuleDetail(moduleKey) {
+            const module = modulesData[moduleKey];
+            if (!module) return;
+
+            const detailDiv = document.getElementById('moduleDetail');
+            detailDiv.innerHTML = `
+                <div class="detail-header">
+                    <div class="detail-title">
+                        <span class="detail-icon">${module.icon}</span>
+                        ${module.title}
+                    </div>
+                    <div class="detail-description">${module.description}</div>
+                </div>
+                <div class="detail-content">
+                    <div class="left-section">
+                        <div class="section-title">Existant / Développé</div>
+                        ${module.existing.map(feature => `
+                            <div class="feature-item">
+                                <div class="feature-title">${feature.title}</div>
+                                <div class="feature-desc">${feature.desc}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="middle-section">
+                        <div class="section-title">KPIs Clés</div>
+                        ${module.kpis.map(kpi => `
+                            <div class="kpi-card">
+                                <div class="kpi-value">${kpi.value}</div>
+                                <div class="kpi-label">${kpi.label}</div>
+                            </div>
+                        `).join('')}
+                        <div class="screenshot-placeholder">📸 Screenshot</div>
+                    </div>
+                    <div class="right-section">
+                        <div class="section-title">Roadmap 2026</div>
+                        <div class="timeline">
+                            ${module.roadmap.map(item => `
+                                <div class="timeline-item">
+                                    <div class="timeline-period">${item.period}</div>
+                                    <div class="timeline-title">${item.title}</div>
+                                    <div class="timeline-desc">${item.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            detailDiv.classList.add('active');
+            document.getElementById('modulesGrid').style.display = 'none';
+            document.querySelector('.back-btn').classList.add('visible');
         }
     </script>
 </body>

@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* Page de Garde */
         .cover-page {
             height: 100vh;
             background: linear-gradient(135deg, #010E5D 0%, #00104B 100%);
@@ -131,7 +130,6 @@
             }
         }
 
-        /* Page Statistiques */
         .stats-page {
             min-height: 100vh;
             background: #f9fafc;
@@ -278,7 +276,6 @@
             box-shadow: 0 6px 20px rgba(1, 14, 93, 0.3);
         }
 
-        /* Header for modules page */
         .header {
             background: linear-gradient(135deg, #010E5D 0%, #00104B 100%);
             color: white;
@@ -331,14 +328,14 @@
             display: block;
         }
 
-        .container {
+        .container-body {
             max-width: 1400px;
             margin: 0 auto;
             padding: 40px 20px;
             display: none;
         }
 
-        .container.active {
+        .container-body.active {
             display: block;
         }
 
@@ -549,18 +546,16 @@
 </head>
 
 <body>
-    <!-- Page de Garde -->
     <div id="coverPage" class="cover-page">
         <div class="cover-content">
             <div class="cover-logo">🚀</div>
-            <h1 class="cover-title">TEAM B</h1>
+            <h1 class="cover-title">ROADMAP</h1>
             <p class="cover-subtitle">Roadmap & Vision Strategique</p>
             <p class="cover-year">2026</p>
             <button class="cover-btn" onclick="showStatsPage()">Commencer</button>
         </div>
     </div>
 
-    <!-- Page Statistiques -->
     <div id="statsPage" class="stats-page">
         <div class="stats-header">
             <h1>Statistiques Globales</h1>
@@ -664,8 +659,7 @@
         <p>Team B - Vision et Planning</p>
     </div>
 
-    <div class="container" id="modulesContainer">
-        <!-- Modules Grid -->
+    <div class="container-body" id="modulesContainer">
         <div id="modulesGrid" class="modules-grid">
             <div class="module-card" onclick="showModuleDetail('dashboard')">
                 <div class="module-icon">📊</div>
@@ -764,7 +758,6 @@
             </div>
         </div>
 
-        <!-- Module Details -->
         <div id="moduleDetail" class="module-detail"></div>
     </div>
 
@@ -782,7 +775,147 @@
                 todo: [
                     {
                         period: 'S1 2026 (Jan-Mar)',
-                        content: 'Integration biometrique et authentification sans mot de passe'
+                        content: 'Integration de nouveaux widgets predictifs et amelioration des performances'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Ajout de dashboards thematiques par departement et roles'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Implementation de la personnalisation avancee avec AI'
+                    },
+                    {
+                        period: 'S4 2026 (Oct-Dec)',
+                        content: 'Integration complete avec tous les modules existants'
+                    }
+                ]
+            },
+            sms: {
+                title: 'SMS',
+                description: 'Module de gestion et envoi de notifications SMS automatiques',
+                existing: [
+                    'Envoi de SMS en masse',
+                    'Templates personnalisables',
+                    'Historique des envois',
+                    'Integration API'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Ajout de SMS interactifs avec reponses automatiques'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Implementation du routage intelligent multi-operateurs'
+                    }
+                ]
+            },
+            mobile: {
+                title: 'Application Mobile',
+                description: 'Application mobile native pour acces aux fonctionnalites principales',
+                existing: [
+                    'Interface iOS et Android',
+                    'Notifications push',
+                    'Mode hors ligne',
+                    'Synchronisation automatique'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Refonte complete de l\'UI/UX mobile'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Ajout de fonctionnalites de realite augmentee'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Integration de l\'analyse d\'images par IA'
+                    },
+                    {
+                        period: 'S4 2026 (Oct-Dec)',
+                        content: 'Support des wearables et appareils IoT'
+                    }
+                ]
+            },
+            reporting: {
+                title: 'Reporting',
+                description: 'Systeme complet de generation de rapports personnalises',
+                existing: [
+                    'Generation automatique de rapports',
+                    'Templates multiples',
+                    'Export PDF/Excel',
+                    'Planification d\'envoi'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Ajout de rapports interactifs avec drill-down'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Integration de l\'analyse predictive'
+                    }
+                ]
+            },
+            oil: {
+                title: 'Oil Monitoring',
+                description: 'Surveillance en temps reel des systemes de lubrification',
+                existing: [
+                    'Monitoring en temps reel',
+                    'Alertes automatiques',
+                    'Historique detaille',
+                    'Analytics avances'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Integration de capteurs IoT nouvelle generation'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Maintenance predictive avec Machine Learning'
+                    }
+                ]
+            },
+            admin: {
+                title: 'Espace Admin',
+                description: 'Interface d\'administration complete pour la gestion de la plateforme',
+                existing: [
+                    'Gestion des utilisateurs',
+                    'Configuration systeme',
+                    'Logs et audit',
+                    'Parametres globaux'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Ajout du module de supervision en temps reel'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Implementation du controle avance des permissions'
+                    }
+                ]
+            },
+            auth: {
+                title: 'Authorization',
+                description: 'Systeme d\'authentification et controle d\'acces securise',
+                existing: [
+                    'Authentification multi-facteurs',
+                    'Gestion des roles',
+                    'SSO integration',
+                    'Audit de securite'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Renforcement de la securite avec biometrie'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Integration de la gestion des acces basée sur les attributs (ABAC)'
                     }
                 ]
             },

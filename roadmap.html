@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadmap - Présentation</title>
+    <title>Roadmap Modules 2026</title>
     <style>
         * {
             margin: 0;
@@ -14,471 +14,751 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: #ffffff;
-            overflow: hidden;
-            height: 100vh;
+            background: #f9fafc;
+            color: #010E5D;
         }
 
-        .presentation {
-            width: 100%;
-            height: 100vh;
-            position: relative;
+        .header {
+            background: linear-gradient(135deg, #010E5D 0%, #00104B 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(1, 14, 93, 0.2);
         }
 
-        .slide {
-            width: 100%;
-            height: 100vh;
+        .header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            color: #00104B;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(1, 14, 93, 0.15);
+            z-index: 1000;
             display: none;
-            padding: 60px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            animation: slideIn 0.6s ease-out;
+            border: 2px solid #00104B;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
-        .slide.active {
+        .back-btn:hover {
+            background: #00104B;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .back-btn.visible {
+            display: block;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .module-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 4px 15px rgba(1, 14, 93, 0.08);
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            border-color: #00104B;
+            box-shadow: 0 8px 25px rgba(1, 14, 93, 0.15);
+        }
+
+        .module-icon {
+            width: 60px;
+            height: 60px;
+            background: #00104B;
+            color: white;
+            border-radius: 12px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
 
-        @keyframes slideIn {
+        .module-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #010E5D;
+            margin-bottom: 10px;
+        }
+
+        .module-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .status-complete {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-progress {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .module-detail {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .module-detail.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateX(100px);
+                transform: translateY(20px);
             }
 
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translateY(0);
             }
         }
 
-        /* Slide 1 - Intro */
-        .slide-intro {
-            background: linear-gradient(135deg, #010E5D 0%, #00104B 100%);
-            text-align: center;
-        }
-
-        .slide-intro h1 {
-            font-size: 6em;
-            color: #ffffff;
+        .detail-header {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
             margin-bottom: 30px;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: glow 2s ease-in-out infinite;
-            font-weight: 700;
+            border-left: 6px solid #00104B;
+            box-shadow: 0 4px 15px rgba(1, 14, 93, 0.08);
         }
 
-        .slide-intro p {
-            font-size: 2em;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 50px;
-        }
-
-        /* Slide 2 - Stats */
-        .slide-stats {
-            background: #f9fafc;
-        }
-
-        .stats-container {
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .stats-title {
-            font-size: 4em;
+        .detail-title {
+            font-size: 2.5em;
             color: #010E5D;
-            text-align: center;
-            margin-bottom: 80px;
             font-weight: 700;
+            margin-bottom: 15px;
         }
 
-        .stats-grid {
+        .detail-description {
+            font-size: 1.2em;
+            color: #00104B;
+            line-height: 1.6;
+        }
+
+        .sections-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
         }
 
-        .stat-box {
-            background: #ffffff;
-            padding: 60px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(1, 14, 93, 0.15);
-            transition: transform 0.3s ease;
-            border: 2px solid #e0e0e0;
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(1, 14, 93, 0.08);
         }
 
-        .stat-box:hover {
-            transform: translateY(-10px);
-            border-color: #00104B;
-            box-shadow: 0 15px 40px rgba(1, 14, 93, 0.25);
-        }
-
-        .stat-number {
-            font-size: 6em;
-            font-weight: 700;
-            color: #00104B;
-            margin-bottom: 20px;
-        }
-
-        .stat-label {
-            font-size: 2em;
-            color: #010E5D;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 700;
-        }
-
-        /* Module Slides */
-        .slide-module {
-            background: #f9fafc;
-        }
-
-        .module-content {
-            width: 100%;
-            max-width: 1200px;
-            background: #ffffff;
-            padding: 80px;
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(1, 14, 93, 0.15);
-            border-left: 8px solid #00104B;
-        }
-
-        .module-number {
-            font-size: 1.5em;
-            color: #00104B;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 700;
-        }
-
-        .module-title {
-            font-size: 4em;
-            color: #010E5D;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        .module-description {
+        .section-title {
             font-size: 1.8em;
-            color: #00104B;
-            line-height: 1.8;
-            margin-bottom: 50px;
-        }
-
-        .module-features {
-            margin-top: 40px;
-        }
-
-        .feature-title {
-            font-size: 2em;
             color: #010E5D;
-            margin-bottom: 30px;
             font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #00104B;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
         }
 
         .feature-item {
-            font-size: 1.5em;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
             color: #00104B;
-            padding: 20px 0;
-            border-bottom: 2px solid #e0e0e0;
+            font-size: 1.1em;
             display: flex;
             align-items: center;
-            transition: background 0.3s ease;
         }
 
-        .feature-item:hover {
-            background: #fafbfe;
+        .feature-item:last-child {
+            border-bottom: none;
         }
 
         .feature-item::before {
             content: '\2713';
             display: inline-block;
-            width: 40px;
-            height: 40px;
+            width: 28px;
+            height: 28px;
             background: #00104B;
-            color: #ffffff;
+            color: white;
             border-radius: 50%;
             text-align: center;
-            line-height: 40px;
-            margin-right: 20px;
+            line-height: 28px;
+            margin-right: 15px;
             font-weight: bold;
+            font-size: 0.9em;
             flex-shrink: 0;
         }
 
-        /* Slide Final */
-        .slide-final {
-            background: linear-gradient(135deg, #010E5D 0%, #00104B 100%);
-            text-align: center;
+        .timeline {
+            margin-top: 30px;
         }
 
-        .slide-final h1 {
-            font-size: 5em;
-            color: #ffffff;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-
-        .slide-final p {
-            font-size: 2em;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Navigation */
-        .navigation {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-
-        .nav-btn {
-            background: #00104B;
-            color: #ffffff;
-            border: none;
-            padding: 20px 40px;
-            font-size: 1.3em;
+        .timeline-item {
+            padding: 25px;
+            margin-bottom: 20px;
+            background: #fafbfe;
             border-radius: 10px;
-            cursor: pointer;
+            border-left: 5px solid #00104B;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(1, 14, 93, 0.3);
+        }
+
+        .timeline-item:hover {
+            background: #f0f4ff;
+            transform: translateX(5px);
+        }
+
+        .timeline-period {
+            font-size: 1.3em;
             font-weight: 700;
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(1, 14, 93, 0.4);
-            background: #010E5D;
-        }
-
-        .slide-counter {
-            position: fixed;
-            top: 40px;
-            right: 40px;
-            background: #00104B;
-            color: #ffffff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            font-size: 1.5em;
-            font-weight: 700;
-            box-shadow: 0 5px 20px rgba(1, 14, 93, 0.3);
-            z-index: 1000;
-        }
-
-        @keyframes glow {
-
-            0%,
-            100% {
-                text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            }
-
-            50% {
-                text-shadow: 0 10px 50px rgba(255, 255, 255, 0.3);
-            }
-        }
-
-        .company-logo {
-            position: fixed;
-            top: 40px;
-            left: 40px;
-            font-size: 2em;
             color: #00104B;
-            font-weight: 700;
-            z-index: 1000;
+            margin-bottom: 10px;
         }
 
-        .slide-intro .company-logo,
-        .slide-final .company-logo {
-            color: #ffffff;
+        .timeline-content {
+            color: #010E5D;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 968px) {
+            .sections-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="company-logo">ROADMAP</div>
+    <button class="back-btn" onclick="showModulesGrid()">Retour aux Modules</button>
 
-    <div class="presentation">
-        <!-- Slide 1: Intro -->
-        <div class="slide slide-intro active">
-            <h1>ROADMAP</h1>
-            <p>Presentation Projet</p>
-            <p style="font-size: 1.5em;">Septembre - Novembre 2024</p>
-        </div>
-
-        <!-- Slide 2: Stats -->
-        <div class="slide slide-stats">
-            <div class="stats-container">
-                <h2 class="stats-title">Resultats Globaux</h2>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-number">5</div>
-                        <div class="stat-label">Sprints</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">40+</div>
-                        <div class="stat-label">Features</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">8</div>
-                        <div class="stat-label">Modules</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">74</div>
-                        <div class="stat-label">Jours</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3: Module 1 -->
-        <div class="slide slide-module">
-            <div class="module-content">
-                <div class="module-number">Module 01</div>
-                <h2 class="module-title">Mobivib Authorization</h2>
-                <p class="module-description">Systeme complet d'autorisation et de controle d'acces pour securiser la
-                    plateforme Mobivib avec gestion avancee des permissions.</p>
-                <div class="module-features">
-                    <h3 class="feature-title">Fonctionnalites Principales</h3>
-                    <div class="feature-item">Gestion complete des permissions utilisateurs par role</div>
-                    <div class="feature-item">Controle d'acces base sur les hierarchies organisationnelles</div>
-                    <div class="feature-item">Securite renforcee exclusive aux super-administrateurs</div>
-                    <div class="feature-item">Interface intuitive pour l'assignation des droits</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4: Module 2 -->
-        <div class="slide slide-module">
-            <div class="module-content">
-                <div class="module-number">Module 02</div>
-                <h2 class="module-title">Oil Monitoring</h2>
-                <p class="module-description">Solution de surveillance en temps reel des systemes de lubrification pour
-                    optimiser la maintenance predictive et prevenir les defaillances.</p>
-                <div class="module-features">
-                    <h3 class="feature-title">Fonctionnalites Principales</h3>
-                    <div class="feature-item">Surveillance en temps reel des niveaux et qualite d'huile</div>
-                    <div class="feature-item">Systeme d'alertes automatiques et notifications intelligentes</div>
-                    <div class="feature-item">Historique detaille avec analytics et tendances</div>
-                    <div class="feature-item">Dashboard visuel pour suivi des equipements</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 5: Module 3 & 4 -->
-        <div class="slide slide-module">
-            <div class="module-content">
-                <div class="module-number">Modules 03 & 04</div>
-                <h2 class="module-title">Vibox Reports & CMCP Process</h2>
-                <p class="module-description">Systeme integre de generation de rapports Vibox avec visualisation des
-                    processus CMCP et authentification securisee.</p>
-                <div class="module-features">
-                    <h3 class="feature-title">Fonctionnalites Principales</h3>
-                    <div class="feature-item">Configuration flexible des templates de rapports Vibox</div>
-                    <div class="feature-item">Authentification personnalisee pour CMCP Process View</div>
-                    <div class="feature-item">Visualisation 3D optimisee des assets industriels</div>
-                    <div class="feature-item">Synchronisation complete avec OCP Khouribga</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 6: Module 5 & 6 -->
-        <div class="slide slide-module">
-            <div class="module-content">
-                <div class="module-number">Modules 05 & 06</div>
-                <h2 class="module-title">Version Management & Site Overview</h2>
-                <p class="module-description">Gestion centralisee des versions applicatives et rapports globaux avec
-                    metriques de performance avancees (MTBF, MTTR).</p>
-                <div class="module-features">
-                    <h3 class="feature-title">Fonctionnalites Principales</h3>
-                    <div class="feature-item">Suivi complet des versions et historique de deploiement</div>
-                    <div class="feature-item">Dashboard statistiques avec MTBF et MTTR en temps reel</div>
-                    <div class="feature-item">Generation automatique de rapports Site Overview</div>
-                    <div class="feature-item">Exportation et envoi programme des rapports</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 7: Module 7 & 8 -->
-        <div class="slide slide-module">
-            <div class="module-content">
-                <div class="module-number">Modules 07 & 08</div>
-                <h2 class="module-title">Checklist System & Email Automation</h2>
-                <p class="module-description">Systeme complet de gestion des checklists avec planning intelligent et
-                    automatisation avancee des communications.</p>
-                <div class="module-features">
-                    <h3 class="feature-title">Fonctionnalites Principales</h3>
-                    <div class="feature-item">Creation et gestion de templates de checklists personnalisables</div>
-                    <div class="feature-item">Planning automatique et assignation des taches aux equipes</div>
-                    <div class="feature-item">Automatisation complete de l'envoi des rapports par email</div>
-                    <div class="feature-item">Notifications personnalisees selon les roles et evenements</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide Final -->
-        <div class="slide slide-final">
-            <h1>Merci</h1>
-            <p>Roadmap - Excellence & Innovation</p>
-            <p style="font-size: 1.5em; margin-top: 30px;">Questions ?</p>
-        </div>
+    <div class="header">
+        <h1>Roadmap Modules 2026</h1>
+        <p>Vision et Planning</p>
     </div>
 
-    <div class="slide-counter">
-        <span id="current">1</span> / <span id="total">8</span>
-    </div>
+    <div class="container">
+        <!-- Modules Grid -->
+        <div id="modulesGrid" class="modules-grid">
+            <!-- Module 1 -->
+            <div class="module-card" onclick="showModuleDetail('dashboard')">
+                <div class="module-icon">📊</div>
+                <div class="module-name">Dashboard</div>
+                <div class="module-status status-progress">En Cours</div>
+            </div>
 
-    <div class="navigation">
-        <button class="nav-btn" onclick="prevSlide()">Precedent</button>
-        <button class="nav-btn" onclick="nextSlide()">Suivant</button>
+            <!-- Module 2 -->
+            <div class="module-card" onclick="showModuleDetail('sms')">
+                <div class="module-icon">📱</div>
+                <div class="module-name">SMS</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module-card" onclick="showModuleDetail('mobile')">
+                <div class="module-icon">📲</div>
+                <div class="module-name">Mobile</div>
+                <div class="module-status status-progress">En Cours</div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module-card" onclick="showModuleDetail('reporting')">
+                <div class="module-icon">📈</div>
+                <div class="module-name">Reporting</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="module-card" onclick="showModuleDetail('oil')">
+                <div class="module-icon">🛢️</div>
+                <div class="module-name">Oil Monitoring</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module-card" onclick="showModuleDetail('admin')">
+                <div class="module-icon">⚙️</div>
+                <div class="module-name">Espace Admin</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="module-card" onclick="showModuleDetail('auth')">
+                <div class="module-icon">🔐</div>
+                <div class="module-name">Authorization</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 8 -->
+            <div class="module-card" onclick="showModuleDetail('vibox')">
+                <div class="module-icon">📋</div>
+                <div class="module-name">Vibox Report</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 9 -->
+            <div class="module-card" onclick="showModuleDetail('cmcp')">
+                <div class="module-icon">🖥️</div>
+                <div class="module-name">CMCP Process</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 10 -->
+            <div class="module-card" onclick="showModuleDetail('version')">
+                <div class="module-icon">🔄</div>
+                <div class="module-name">Version Management</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 11 -->
+            <div class="module-card" onclick="showModuleDetail('checklist')">
+                <div class="module-icon">✅</div>
+                <div class="module-name">Checklist System</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 12 -->
+            <div class="module-card" onclick="showModuleDetail('email')">
+                <div class="module-icon">📧</div>
+                <div class="module-name">Email Automation</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 13 -->
+            <div class="module-card" onclick="showModuleDetail('analytics')">
+                <div class="module-icon">📊</div>
+                <div class="module-name">Analytics</div>
+                <div class="module-status status-progress">En Cours</div>
+            </div>
+
+            <!-- Module 14 -->
+            <div class="module-card" onclick="showModuleDetail('notifications')">
+                <div class="module-icon">🔔</div>
+                <div class="module-name">Notifications</div>
+                <div class="module-status status-progress">En Cours</div>
+            </div>
+
+            <!-- Module 15 -->
+            <div class="module-card" onclick="showModuleDetail('users')">
+                <div class="module-icon">👥</div>
+                <div class="module-name">User Management</div>
+                <div class="module-status status-complete">Complete</div>
+            </div>
+
+            <!-- Module 16 -->
+            <div class="module-card" onclick="showModuleDetail('api')">
+                <div class="module-icon">🔌</div>
+                <div class="module-name">API Gateway</div>
+                <div class="module-status status-progress">En Cours</div>
+            </div>
+        </div>
+
+        <!-- Module Details (Hidden by default) -->
+        <div id="moduleDetail" class="module-detail"></div>
     </div>
 
     <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        const companyLogo = document.querySelector('.company-logo');
-
-        document.getElementById('total').textContent = totalSlides;
-
-        function updateLogoColor() {
-            if (currentSlide === 0 || currentSlide === totalSlides - 1) {
-                companyLogo.style.color = '#ffffff';
-            } else {
-                companyLogo.style.color = '#00104B';
+        const modulesData = {
+            dashboard: {
+                title: 'Dashboard',
+                description: 'Tableau de bord central avec visualisation des metriques cles et KPIs en temps reel',
+                existing: [
+                    'Widgets personnalisables',
+                    'Graphiques interactifs',
+                    'Metriques en temps reel',
+                    'Export de donnees'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Integration de nouveaux widgets predictifs et amelioration des performances'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Ajout de dashboards thematiques par departement et roles'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Implementation de la personnalisation avancee avec AI'
+                    },
+                    {
+                        period: 'S4 2026 (Oct-Dec)',
+                        content: 'Integration complete avec tous les modules existants'
+                    }
+                ]
+            },
+            sms: {
+                title: 'SMS',
+                description: 'Module de gestion et envoi de notifications SMS automatiques',
+                existing: [
+                    'Envoi de SMS en masse',
+                    'Templates personnalisables',
+                    'Historique des envois',
+                    'Integration API'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Ajout de SMS interactifs avec reponses automatiques'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Implementation du routage intelligent multi-operateurs'
+                    }
+                ]
+            },
+            mobile: {
+                title: 'Application Mobile',
+                description: 'Application mobile native pour acces aux fonctionnalites principales',
+                existing: [
+                    'Interface iOS et Android',
+                    'Notifications push',
+                    'Mode hors ligne',
+                    'Synchronisation automatique'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Refonte complete de l\'UI/UX mobile'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Ajout de fonctionnalites de realite augmentee'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Integration de l\'analyse d\'images par IA'
+                    },
+                    {
+                        period: 'S4 2026 (Oct-Dec)',
+                        content: 'Support des wearables et appareils IoT'
+                    }
+                ]
+            },
+            reporting: {
+                title: 'Reporting',
+                description: 'Systeme complet de generation de rapports personnalises',
+                existing: [
+                    'Generation automatique de rapports',
+                    'Templates multiples',
+                    'Export PDF/Excel',
+                    'Planification d\'envoi'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Ajout de rapports interactifs avec drill-down'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Integration de l\'analyse predictive'
+                    }
+                ]
+            },
+            oil: {
+                title: 'Oil Monitoring',
+                description: 'Surveillance en temps reel des systemes de lubrification',
+                existing: [
+                    'Monitoring en temps reel',
+                    'Alertes automatiques',
+                    'Historique detaille',
+                    'Analytics avances'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Integration de capteurs IoT nouvelle generation'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Maintenance predictive avec Machine Learning'
+                    }
+                ]
+            },
+            admin: {
+                title: 'Espace Admin',
+                description: 'Interface d\'administration complete pour la gestion de la plateforme',
+                existing: [
+                    'Gestion des utilisateurs',
+                    'Configuration systeme',
+                    'Logs et audit',
+                    'Parametres globaux'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Ajout du module de supervision en temps reel'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Implementation du controle avance des permissions'
+                    }
+                ]
+            },
+            auth: {
+                title: 'Authorization',
+                description: 'Systeme d\'authentification et controle d\'acces securise',
+                existing: [
+                    'Authentification multi-facteurs',
+                    'Gestion des roles',
+                    'SSO integration',
+                    'Audit de securite'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Integration biometrique et authentification sans mot de passe'
+                    }
+                ]
+            },
+            vibox: {
+                title: 'Vibox Report',
+                description: 'Generation de rapports Vibox avec configuration avancee',
+                existing: [
+                    'Templates configurables',
+                    'Generation automatique',
+                    'Multi-formats',
+                    'Planification'
+                ],
+                todo: [
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Amelioration des templates avec IA generative'
+                    }
+                ]
+            },
+            cmcp: {
+                title: 'CMCP Process View',
+                description: 'Visualisation des processus CMCP avec authentification',
+                existing: [
+                    'Authentification CMCP',
+                    'Visualisation 3D',
+                    'Synchronisation OCP',
+                    'Vues process'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Ajout de simulations interactives 3D'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Integration realite virtuelle pour formation'
+                    }
+                ]
+            },
+            version: {
+                title: 'Version Management',
+                description: 'Gestion centralisee des versions et deployments',
+                existing: [
+                    'Suivi des versions',
+                    'Historique complet',
+                    'Notifications',
+                    'Rollback automatique'
+                ],
+                todo: [
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Integration CI/CD complete avec tests automatises'
+                    }
+                ]
+            },
+            checklist: {
+                title: 'Checklist System',
+                description: 'Systeme de gestion des checklists avec planning',
+                existing: [
+                    'Templates checklist',
+                    'Planning automatique',
+                    'Assignation taches',
+                    'Suivi progression'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Ajout de checklists intelligentes avec suggestions'
+                    }
+                ]
+            },
+            email: {
+                title: 'Email Automation',
+                description: 'Automatisation complete des communications email',
+                existing: [
+                    'Envoi automatique',
+                    'Templates personnalises',
+                    'Gestion des listes',
+                    'Analytics email'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Integration de l\'IA pour optimisation des envois'
+                    }
+                ]
+            },
+            analytics: {
+                title: 'Analytics',
+                description: 'Module d\'analyse avancee avec Machine Learning',
+                existing: [
+                    'Tableaux de bord analytiques',
+                    'Rapports statistiques',
+                    'Visualisations graphiques'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Lancement du module analytics avec ML'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Integration de predictions et recommandations'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Ajout de l\'analyse comportementale avancee'
+                    }
+                ]
+            },
+            notifications: {
+                title: 'Notifications',
+                description: 'Centre de notifications multi-canaux intelligent',
+                existing: [
+                    'Notifications in-app',
+                    'Configuration par utilisateur',
+                    'Historique des notifications'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Integration push notifications multi-plateforme'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Ajout de notifications intelligentes avec priorites'
+                    }
+                ]
+            },
+            users: {
+                title: 'User Management',
+                description: 'Gestion complete des utilisateurs et profils',
+                existing: [
+                    'CRUD utilisateurs',
+                    'Gestion des roles',
+                    'Profils personnalises',
+                    'Audit des actions'
+                ],
+                todo: [
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Ajout de la gestion des groupes dynamiques'
+                    }
+                ]
+            },
+            api: {
+                title: 'API Gateway',
+                description: 'Gateway API centralisee pour integrations externes',
+                existing: [
+                    'API REST documentee',
+                    'Authentification API',
+                    'Rate limiting'
+                ],
+                todo: [
+                    {
+                        period: 'S1 2026 (Jan-Mar)',
+                        content: 'Deploiement API Gateway avec micro-services'
+                    },
+                    {
+                        period: 'S2 2026 (Avr-Juin)',
+                        content: 'Integration GraphQL et WebSocket'
+                    },
+                    {
+                        period: 'S3 2026 (Juil-Sep)',
+                        content: 'Marketplace API pour partenaires externes'
+                    }
+                ]
             }
+        };
+
+        function showModuleDetail(moduleId) {
+            const data = modulesData[moduleId];
+            const detailDiv = document.getElementById('moduleDetail');
+            const gridDiv = document.getElementById('modulesGrid');
+
+            let existingHtml = '';
+            data.existing.forEach(function (item) {
+                existingHtml += '<li class="feature-item">' + item + '</li>';
+            });
+
+            let todoHtml = '';
+            data.todo.forEach(function (item) {
+                todoHtml += '<div class="timeline-item"><div class="timeline-period">' +
+                    item.period + '</div><div class="timeline-content">' +
+                    item.content + '</div></div>';
+            });
+
+            detailDiv.innerHTML = '<div class="detail-header"><h2 class="detail-title">' +
+                data.title + '</h2><p class="detail-description">' +
+                data.description + '</p></div><div class="sections-container">' +
+                '<div class="section"><h3 class="section-title">Existant / Developpe</h3>' +
+                '<ul class="feature-list">' + existingHtml + '</ul></div>' +
+                '<div class="section"><h3 class="section-title">Roadmap 2026</h3>' +
+                '<div class="timeline">' + todoHtml + '</div></div></div>';
+
+            gridDiv.style.display = 'none';
+            detailDiv.classList.add('active');
+            document.querySelector('.back-btn').classList.add('visible');
+            window.scrollTo(0, 0);
         }
 
-        function showSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (n + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
-            document.getElementById('current').textContent = currentSlide + 1;
-            updateLogoColor();
+        function showModulesGrid() {
+            document.getElementById('modulesGrid').style.display = 'grid';
+            document.getElementById('moduleDetail').classList.remove('active');
+            document.querySelector('.back-btn').classList.remove('visible');
+            window.scrollTo(0, 0);
         }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-            }
-        });
-
-        updateLogoColor();
     </script>
 </body>
 

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadmap</title>
+    <title>Team B - Présentation</title>
     <style>
         * {
             margin: 0;
@@ -13,370 +14,280 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-            animation: slideDown 0.8s ease-out;
-            position: relative;
+            background: #1a1a2e;
             overflow: hidden;
+            height: 100vh;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-            animation: rotate 10s linear infinite;
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+        .presentation {
+            width: 100%;
+            height: 100vh;
             position: relative;
-            z-index: 1;
-            animation: glow 2s ease-in-out infinite;
         }
 
-        .hero p {
-            font-size: 1.5em;
-            color: #555;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s ease;
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: none;
+            padding: 60px;
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            left: 0;
+            animation: slideIn 0.6s ease-out;
         }
 
-        .stat-card:hover::before {
-            left: 100%;
-        }
-
-        .stat-card:nth-child(1) { animation-delay: 0.1s; }
-        .stat-card:nth-child(2) { animation-delay: 0.2s; }
-        .stat-card:nth-child(3) { animation-delay: 0.3s; }
-        .stat-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .stat-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-number {
-            font-size: 4em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 1.2em;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .timeline-section {
-            background: white;
-            padding: 50px;
-            border-radius: 30px;
-            margin-bottom: 50px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .timeline-section h2 {
-            font-size: 3em;
-            text-align: center;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .sprint-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 40px;
-            border-radius: 25px;
-            margin-bottom: 40px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-        }
-
-        .sprint-card::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .sprint-card:hover::after {
-            width: 600px;
-            height: 600px;
-        }
-
-        .sprint-card:hover {
-            transform: translateX(20px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.6);
-        }
-
-        .sprint-header {
+        .slide.active {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .sprint-number {
-            font-size: 4em;
-            font-weight: bold;
-            opacity: 0.3;
-        }
-
-        .sprint-theme {
-            font-size: 2em;
-            font-weight: bold;
-        }
-
-        .sprint-period {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .achievements {
-            display: none;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-
-        .achievements.active {
-            display: block;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        .achievement-item {
-            padding: 15px;
-            margin: 10px 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            animation: popIn 0.4s ease-out forwards;
-            opacity: 0;
-            transform: translateX(-30px);
-        }
-
-        .achievement-item:nth-child(1) { animation-delay: 0.1s; }
-        .achievement-item:nth-child(2) { animation-delay: 0.15s; }
-        .achievement-item:nth-child(3) { animation-delay: 0.2s; }
-        .achievement-item:nth-child(4) { animation-delay: 0.25s; }
-        .achievement-item:nth-child(5) { animation-delay: 0.3s; }
-        .achievement-item:nth-child(6) { animation-delay: 0.35s; }
-        .achievement-item:nth-child(7) { animation-delay: 0.4s; }
-        .achievement-item:nth-child(8) { animation-delay: 0.45s; }
-
-        .achievement-item::before {
-            content: '\2713';
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: white;
-            color: #667eea;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            margin-right: 15px;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .modules-section {
-            background: white;
-            padding: 50px;
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .modules-section h2 {
-            font-size: 3em;
-            text-align: center;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .module-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 30px;
-            border-radius: 20px;
-            color: white;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .module-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-            transform: scale(0);
-            transition: transform 0.6s ease;
-        }
-
-        .module-card:hover::before {
-            transform: scale(1);
-        }
-
-        .module-card:hover {
-            transform: translateY(-10px) rotate(2deg);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .module-card:nth-child(even) {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .module-card:nth-child(3n) {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-
-        .module-name {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .module-category {
-            opacity: 0.9;
-            font-size: 1em;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateX(100px);
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        @keyframes popIn {
             to {
                 opacity: 1;
                 transform: translateX(0);
             }
         }
 
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
-            50% { text-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+        /* Slide 1 - Intro */
+        .slide-intro {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .slide-intro h1 {
+            font-size: 6em;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .slide-intro p {
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 50px;
+        }
+
+        /* Slide 2 - Stats */
+        .slide-stats {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .stats-container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .stats-title {
+            font-size: 4em;
+            color: white;
+            text-align: center;
+            margin-bottom: 80px;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 6em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .stat-label {
+            font-size: 2em;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Module Slides */
+        .slide-module {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .slide-module:nth-of-type(4) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .slide-module:nth-of-type(5) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .slide-module:nth-of-type(6) {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .slide-module:nth-of-type(7) {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .slide-module:nth-of-type(8) {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .module-content {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 80px;
+            border-radius: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .module-number {
+            font-size: 1.5em;
+            color: #999;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .module-title {
+            font-size: 4em;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .module-description {
+            font-size: 1.8em;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .module-features {
+            margin-top: 40px;
+        }
+
+        .feature-title {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .feature-item {
+            font-size: 1.5em;
+            color: #555;
+            padding: 20px 0;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-item::before {
+            content: '\2713';
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 20px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Slide Final */
+        .slide-final {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+        }
+
+        .slide-final h1 {
+            font-size: 5em;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .slide-final p {
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: white;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 30px;
+            border-radius: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            50% {
+                text-shadow: 0 10px 50px rgba(255, 255, 255, 0.5);
+            }
         }
 
         .particle {
@@ -391,212 +302,186 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-20px) translateX(10px); }
-        }
 
-        .click-hint {
-            text-align: center;
-            color: rgb(0, 0, 0);
-            font-size: 1.2em;
-            margin: 20px 20px;
-            animation: pulse 2s ease-in-out infinite;
-        }
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+            }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            50% {
+                transform: translateY(-30px) translateX(20px);
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>TEAM B</h1>
-            <p>Roadmap | Sept - Nov 2025</p>
+    <div class="presentation">
+        <!-- Slide 1: Intro -->
+        <div class="slide slide-intro active">
+            <h1>ROADMAP</h1>
+            <p>Presentation Projet</p>
+            <p style="font-size: 1.5em;"> 2025</p>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Sprints</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">40+</div>
-                <div class="stat-label">Features</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">12</div>
-                <div class="stat-label">Modules</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">74</div>
-                <div class="stat-label">Jours</div>
-            </div>
-        </div>
-
-        <div class="timeline-section">
-            <h2>Timeline des Sprints</h2>
-            <div class="click-hint">Cliquez sur chaque sprint pour voir les details</div>
-
-            <div class="sprints-container">
-                <div class="sprint-card" onclick="toggleAchievements(this)">
-                    <div class="sprint-header">
-                        <div>
-                            <div class="sprint-number">26</div>
-                            <div class="sprint-theme">Securite & Configuration</div>
-                            <div class="sprint-period">9-19 Septembre</div>
-                        </div>
+        <!-- Slide 2: Stats -->
+        <div class="slide slide-stats">
+            <div class="stats-container">
+                <h2 class="stats-title">Resultats Globaux</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Sprints</div>
                     </div>
-                    <div class="achievements">
-                        <div class="achievement-item">Module Mobivib Authorization Page</div>
-                        <div class="achievement-item">Module Oil Monitoring</div>
-                        <div class="achievement-item">Module Vibox Report Configuration</div>
-                        <div class="achievement-item">Amelioration securite (super-admins)</div>
-                        <div class="achievement-item">Amelioration UI/UX responsive</div>
-                        <div class="achievement-item">Creation vues process Khouribga</div>
-                        <div class="achievement-item">Migration JFC1 V2 V3</div>
+                    <div class="stat-box">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">Features</div>
                     </div>
-                </div>
-
-                <div class="sprint-card" onclick="toggleAchievements(this)">
-                    <div class="sprint-header">
-                        <div>
-                            <div class="sprint-number">27</div>
-                            <div class="sprint-theme">Roles & Optimisation</div>
-                            <div class="sprint-period">24 Sept - 3 Oct</div>
-                        </div>
+                    <div class="stat-box">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Modules</div>
                     </div>
-                    <div class="achievements">
-                        <div class="achievement-item">Redesign role & permissions matrix</div>
-                        <div class="achievement-item">Exportation complete tables</div>
-                        <div class="achievement-item">Creation rapport Vibox</div>
-                        <div class="achievement-item">Ajout CMCP Process View</div>
-                        <div class="achievement-item">Securite assets (suppression)</div>
-                        <div class="achievement-item">Fix bugs map view</div>
-                    </div>
-                </div>
-
-                <div class="sprint-card" onclick="toggleAchievements(this)">
-                    <div class="sprint-header">
-                        <div>
-                            <div class="sprint-number">28</div>
-                            <div class="sprint-theme">Authentification & Sync</div>
-                            <div class="sprint-period">13-24 Octobre</div>
-                        </div>
-                    </div>
-                    <div class="achievements">
-                        <div class="achievement-item">Systeme authentification CMCP</div>
-                        <div class="achievement-item">Synchronisation OCP Khouribga</div>
-                        <div class="achievement-item">Optimisation vues 3D</div>
-                        <div class="achievement-item">Fix bugs dashboard</div>
-                        <div class="achievement-item">Refactor Vibox diagnostic</div>
-                        <div class="achievement-item">Refactor CMCP APIs</div>
-                        <div class="achievement-item">Assignation entites admins</div>
-                        <div class="achievement-item">Affichage nouvelle version</div>
-                    </div>
-                </div>
-
-                <div class="sprint-card" onclick="toggleAchievements(this)">
-                    <div class="sprint-header">
-                        <div>
-                            <div class="sprint-number">29</div>
-                            <div class="sprint-theme">Gestion & Performance</div>
-                            <div class="sprint-period">27 Oct - 7 Nov</div>
-                        </div>
-                    </div>
-                    <div class="achievements">
-                        <div class="achievement-item">Importation cartes SIM</div>
-                        <div class="achievement-item">Module e-mails automatiques</div>
-                        <div class="achievement-item">Module Version Management</div>
-                        <div class="achievement-item">Ameliorations UX/UI</div>
-                        <div class="achievement-item">Optimisation appels API</div>
-                        <div class="achievement-item">Fix bug mot de passe</div>
-                        <div class="achievement-item">Ameliorations filtres</div>
-                        <div class="achievement-item">Sync environnement OCP</div>
-                    </div>
-                </div>
-
-                <div class="sprint-card" onclick="toggleAchievements(this)">
-                    <div class="sprint-header">
-                        <div>
-                            <div class="sprint-number">30</div>
-                            <div class="sprint-theme">Rapports & Diagnostics</div>
-                            <div class="sprint-period">10-21 Novembre</div>
-                        </div>
-                    </div>
-                    <div class="achievements">
-                        <div class="achievement-item">Refactor Module Vibox Diagnosis</div>
-                        <div class="achievement-item">Module Site Overview Report</div>
-                        <div class="achievement-item">Exportation & envoi rapports</div>
-                        <div class="achievement-item">Dashboard diagnostics (MTBF, MTTR)</div>
-                        <div class="achievement-item">Module checklist template</div>
-                        <div class="achievement-item">Module checklist planning</div>
-                        <div class="achievement-item">Script signals compress checker v2</div>
+                    <div class="stat-box">
+                        <div class="stat-number">74</div>
+                        <div class="stat-label">Jours</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="modules-section">
-            <h2>Modules Cles Developpes</h2>
-            <div class="modules-grid">
-                <div class="module-card">
-                    <div class="module-name">Mobivib Authorization</div>
-                    <div class="module-category">Securite & Controle acces</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-name">Oil Monitoring</div>
-                    <div class="module-category">Surveillance & Maintenance</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-name">Vibox Report</div>
-                    <div class="module-category">Rapports & Analytics</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-name">CMCP Process View</div>
-                    <div class="module-category">Visualisation & Monitoring</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-name">Version Management</div>
-                    <div class="module-category">Gestion & Deploiement</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-name">Site Overview Report</div>
-                    <div class="module-category">Rapports Globaux</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-name">Checklist System</div>
-                    <div class="module-category">Planning & Suivi</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-name">Email Automation</div>
-                    <div class="module-category">Communication & Notifications</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-name">Documentation API</div>
-                    <div class="module-category">Guides & Ressources</div>
+        <!-- Slide 3: Module 1 -->
+        <div class="slide slide-module">
+            <div class="module-content">
+                <div class="module-number">Module 01</div>
+                <h2 class="module-title">Mobivib Authorization</h2>
+                <p class="module-description">Systeme complet d'autorisation et de controle d'acces pour securiser la
+                    plateforme Mobivib avec gestion avancee des permissions.</p>
+                <div class="module-features">
+                    <h3 class="feature-title">Fonctionnalites Principales</h3>
+                    <div class="feature-item">Gestion complete des permissions utilisateurs par role</div>
+                    <div class="feature-item">Controle d'acces base sur les hierarchies organisationnelles</div>
+                    <div class="feature-item">Securite renforcee exclusive aux super-administrateurs</div>
+                    <div class="feature-item">Interface intuitive pour l'assignation des droits</div>
                 </div>
             </div>
+        </div>
+
+        <!-- Slide 4: Module 2 -->
+        <div class="slide slide-module">
+            <div class="module-content">
+                <div class="module-number">Module 02</div>
+                <h2 class="module-title">Oil Monitoring</h2>
+                <p class="module-description">Solution de surveillance en temps reel des systemes de lubrification pour
+                    optimiser la maintenance predictive et prevenir les defaillances.</p>
+                <div class="module-features">
+                    <h3 class="feature-title">Fonctionnalites Principales</h3>
+                    <div class="feature-item">Surveillance en temps reel des niveaux et qualite d'huile</div>
+                    <div class="feature-item">Systeme d'alertes automatiques et notifications intelligentes</div>
+                    <div class="feature-item">Historique detaille avec analytics et tendances</div>
+                    <div class="feature-item">Dashboard visuel pour suivi des equipements</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Module 3 & 4 -->
+        <div class="slide slide-module">
+            <div class="module-content">
+                <div class="module-number">Modules 03 & 04</div>
+                <h2 class="module-title">Vibox Reports & CMCP Process</h2>
+                <p class="module-description">Systeme integre de generation de rapports Vibox avec visualisation des
+                    processus CMCP et authentification securisee.</p>
+                <div class="module-features">
+                    <h3 class="feature-title">Fonctionnalites Principales</h3>
+                    <div class="feature-item">Configuration flexible des templates de rapports Vibox</div>
+                    <div class="feature-item">Authentification personnalisee pour CMCP Process View</div>
+                    <div class="feature-item">Visualisation 3D optimisee des assets industriels</div>
+                    <div class="feature-item">Synchronisation complete avec OCP Khouribga</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Module 5 & 6 -->
+        <div class="slide slide-module">
+            <div class="module-content">
+                <div class="module-number">Modules 05 & 06</div>
+                <h2 class="module-title">Version Management & Site Overview</h2>
+                <p class="module-description">Gestion centralisee des versions applicatives et rapports globaux avec
+                    metriques de performance avancees (MTBF, MTTR).</p>
+                <div class="module-features">
+                    <h3 class="feature-title">Fonctionnalites Principales</h3>
+                    <div class="feature-item">Suivi complet des versions et historique de deploiement</div>
+                    <div class="feature-item">Dashboard statistiques avec MTBF et MTTR en temps reel</div>
+                    <div class="feature-item">Generation automatique de rapports Site Overview</div>
+                    <div class="feature-item">Exportation et envoi programme des rapports</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Module 7 & 8 -->
+        <div class="slide slide-module">
+            <div class="module-content">
+                <div class="module-number">Modules 07 & 08</div>
+                <h2 class="module-title">Checklist System & Email Automation</h2>
+                <p class="module-description">Systeme complet de gestion des checklists avec planning intelligent et
+                    automatisation avancee des communications.</p>
+                <div class="module-features">
+                    <h3 class="feature-title">Fonctionnalites Principales</h3>
+                    <div class="feature-item">Creation et gestion de templates de checklists personnalisables</div>
+                    <div class="feature-item">Planning automatique et assignation des taches aux equipes</div>
+                    <div class="feature-item">Automatisation complete de l'envoi des rapports par email</div>
+                    <div class="feature-item">Notifications personnalisees selon les roles et evenements</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Slide Final -->
+        <div class="slide slide-final">
+            <h1>Merci</h1>
         </div>
     </div>
 
+    <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">8</span>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">Precedent</button>
+        <button class="nav-btn" onclick="nextSlide()">Suivant</button>
+    </div>
+
     <script>
-        function toggleAchievements(card) {
-            var achievements = card.querySelector('.achievements');
-            var allAchievements = document.querySelectorAll('.achievements');
-            
-            for (var i = 0; i < allAchievements.length; i++) {
-                if (allAchievements[i] !== achievements) {
-                    allAchievements[i].classList.remove('active');
-                }
-            }
-            
-            achievements.classList.toggle('active');
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current').textContent = currentSlide + 1;
         }
 
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
         function createParticles() {
-            for (var i = 0; i < 20; i++) {
+            for (var i = 0; i < 30; i++) {
                 var particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
@@ -608,23 +493,7 @@
         }
 
         createParticles();
-
-        document.addEventListener('mousemove', function(e) {
-            if (Math.random() > 0.95) {
-                var sparkle = document.createElement('div');
-                sparkle.className = 'particle';
-                sparkle.style.left = e.pageX + 'px';
-                sparkle.style.top = e.pageY + 'px';
-                sparkle.style.width = '5px';
-                sparkle.style.height = '5px';
-                sparkle.style.animation = 'float 1s ease-out forwards';
-                document.body.appendChild(sparkle);
-                
-                setTimeout(function() {
-                    sparkle.remove();
-                }, 1000);
-            }
-        });
     </script>
 </body>
+
 </html>
